@@ -6,7 +6,7 @@ authors = ["Egor Gerimovich <cherund@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.10,<4.0"
 django = "^5.0.7"
 python-dotenv = "^1.0.1"
 flake8 = "^7.1.0"
