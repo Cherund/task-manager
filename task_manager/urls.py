@@ -18,10 +18,10 @@ from django.urls import path, include
 from task_manager import views
 
 urlpatterns = [
-    path('', views.index),
-    path('login/', views.login),
-    path('users/', views.users),
-    path('users/create/', views.register),
+    path('', views.IndexView.as_view(), name='main'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout),
+    path('users/', include('apps.users.urls')),
     path('statuses/', views.statuses),
     path('labels/', views.labels),
     path('tasks/', views.tasks),

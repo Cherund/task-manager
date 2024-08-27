@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views import View
 
 
-def index(request):
-    return render(request, 'index.html')
+# def index(request):
+#     return render(request, 'index.html')
+
+class IndexView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'index.html')
 
 
 def users(request):
@@ -13,8 +18,8 @@ def login(request):
     return render(request, 'login.html')
 
 
-def register(request):
-    return render(request, 'register.html')
+def logout(request):
+    return None
 
 
 def statuses(request):
