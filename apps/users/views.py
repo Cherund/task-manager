@@ -17,7 +17,7 @@ from apps.users.forms import CustomUserCreationForm
 class UserCreateView(CreateView):
     template_name = 'create.html'
     form_class = CustomUserCreationForm
-#
+
 #
 # def update(request):
 #     return None
