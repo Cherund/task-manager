@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
+from django.views.generic import TemplateView, ListView
 
 
 # def index(request):
 #     return render(request, 'index.html')
 
-class IndexView(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 
 def users(request):

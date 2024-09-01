@@ -2,3 +2,4 @@
 /.idea/
 /dist/
 task_manager/.env
+db.sqlite3

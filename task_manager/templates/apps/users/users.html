@@ -14,20 +14,22 @@
             <th></th>
         </tr>
         </thead>
+        {% for user in users %}
         <tbody>
         <tr>
-            <td>1</td>
-            <td>testtesttest</td>
-            <td>test test</td>
-            <td>20.06.2024 15:21</td>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user }}</td>
+            <td>{{ user.date_joined }}</td>
             <td>
-                <a href="/users/1/update/">Изменить</a>
+                <a href="{% url 'users_update' pk=user.pk %}">Изменить</a>
                 <br>
-                <a href="/users/1/delete/">Удалить</a>
+                <a href="/users/{{ user.pk }}/delete/">Удалить</a>
             </td>
         </tr>
 
         </tbody>
+        {% endfor %}
     </table>
 
 </main>
