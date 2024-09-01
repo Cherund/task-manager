@@ -1,0 +1,12 @@
+{% extends "form.html" %}
+{% block header %}
+Удаление пользователя
+{% endblock %}
+
+{% block form_action %}
+{% url 'users_delete' pk=user.pk %}
+{% endblock %}
+
+{%block text %}
+Вы уверены, что хотите удалить {{ user }}?
+{% endblock %}

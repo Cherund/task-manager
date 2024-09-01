@@ -1,0 +1,8 @@
+{% extends "form.html" %}
+{% block header %}
+Изменение пользователя
+{% endblock %}
+
+{% block form_action %}
+{% url 'users_update' pk=user.pk %}
+{% endblock %}
