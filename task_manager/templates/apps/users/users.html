@@ -24,7 +24,7 @@
             <td>
                 <a href="{% url 'users_update' pk=user.pk %}">Изменить</a>
                 <br>
-                <a href="/users/{{ user.pk }}/delete/">Удалить</a>
+                <a href="{% url 'users_delete' pk=user.pk %}">Удалить</a>
             </td>
         </tr>
 
