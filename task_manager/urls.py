@@ -20,6 +20,8 @@ from task_manager import views
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('users/', include('apps.users.urls')),
+    path('login/', views.UserLoginView.as_view(), name='login'),
+    path('logout/', views.UserLogoutView.as_view(), name='logout'),
     path('statuses/', views.statuses),
     path('labels/', views.labels),
     path('tasks/', views.tasks),
