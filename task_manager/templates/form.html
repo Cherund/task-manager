@@ -13,7 +13,8 @@
 
     {% bootstrap_form form %}
 
-    {% bootstrap_button button_type="submit" content="Register" %}
+    <input class="btn {% block button_class%}btn-primary{% endblock %}" type="submit"
+           value="{% block button_value %}{% endblock %}">
 
 </form>
 
