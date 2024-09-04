@@ -1,0 +1,10 @@
+{% extends "form.html" %}
+{% block header %}
+Изменение статуса
+{% endblock %}
+
+{% block form_action %}
+{% url 'statuses_update' pk=status.pk %}
+{% endblock %}
+
+{% block button_value %}Изменить{% endblock %}
