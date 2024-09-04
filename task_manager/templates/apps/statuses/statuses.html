@@ -4,14 +4,13 @@
 <div class="container wrapper flex-grow-1">
 
 
-
     <h1 class="my-4">
 
         Статусы
 
     </h1>
 
-    <a class="btn btn-primary mb-3" href="/statuses/create/">Создать статус</a>
+    <a class="btn btn-primary mb-3" href="{% url 'statuses_create' %}">Создать статус</a>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -21,21 +20,20 @@
             <th></th>
         </tr>
         </thead>
+        {% for status in statuses %}
         <tbody>
-
         <tr>
-            <td>1</td>
-            <td>testЕукеп21</td>
-            <td>20.06.2024 15:21</td>
+            <td>{{ status.id }}</td>
+            <td>{{ status }}</td>
+            <td>{{ status.timestamp }}</td>
             <td>
                 <a href="/statuses/1/update/">Изменить</a>
                 <br>
                 <a href="/statuses/1/delete/">Удалить</a>
             </td>
         </tr>
-
-
         </tbody>
+        {% endfor %}
     </table>
 
 </div>

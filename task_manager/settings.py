@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'apps.labels',
     'apps.users',
+    'apps.statuses',
 
 ]
 
@@ -135,6 +136,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Constants
-LOGIN_URL = reverse_lazy('users_login')
+LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('index')

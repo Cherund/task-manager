@@ -1,11 +1,11 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views import View
+from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils.translation import gettext as _
-from task_manager.settings import LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL
+from django.conf import settings
+from django.contrib import messages
 
 
 class IndexView(TemplateView):
@@ -15,17 +15,16 @@ class IndexView(TemplateView):
 class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = 'login.html'
     form_class = AuthenticationForm
-    success_url = LOGIN_REDIRECT_URL
+    success_url = settings.LOGIN_REDIRECT_URL
     success_message = _('You have successfully logged in')
 
 
 class UserLogoutView(SuccessMessageMixin, LogoutView):
-    next_page = LOGOUT_REDIRECT_URL
-    success_message = _('You have successfully logged out')
+    next_page = settings.LOGOUT_REDIRECT_URL
 
-
-def statuses(request):
-    return render(request, 'statuses.html')
+    def dispatch(self, request, *args, **kwargs):
+        messages.info(request, _('You are logged out'))
+        return super().dispatch(request, *args, **kwargs)
 
 
 def labels(request):
