@@ -27,9 +27,9 @@
             <td>{{ status }}</td>
             <td>{{ status.timestamp }}</td>
             <td>
-                <a href="/statuses/1/update/">Изменить</a>
+                <a href="{% url 'statuses_update' pk=status.pk %}">Изменить</a>
                 <br>
-                <a href="/statuses/1/delete/">Удалить</a>
+                <a href="{% url 'statuses_delete' pk=status.pk %}">Удалить</a>
             </td>
         </tr>
         </tbody>
