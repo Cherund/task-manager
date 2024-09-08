@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container wrapper flex-grow-1">
+
+
+    <h1 class="my-4">
+
+        Метки
+
+    </h1>
+
+    <a class="btn btn-primary mb-3" href="{% url 'labels_create' %}">Создать метку</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Дата создания</th>
+            <th></th>
+        </tr>
+        </thead>
+        {% for label in labels %}
+        <tbody>
+        <tr>
+            <td>{{ label.id }}</td>
+            <td>{{ label }}</td>
+            <td>{{ label.timestamp }}</td>
+            <td>
+                <a href="{% url 'labels_update' pk=label.pk %}">Изменить</a>
+                <br>
+                <a href="{% url 'labels_delete' pk=label.pk %}">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}
