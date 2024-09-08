@@ -25,11 +25,3 @@ class UserLogoutView(SuccessMessageMixin, LogoutView):
     def dispatch(self, request, *args, **kwargs):
         messages.info(request, _('You are logged out'))
         return super().dispatch(request, *args, **kwargs)
-
-
-def labels(request):
-    return render(request, 'labels.html')
-
-
-def tasks(request):
-    return render(request, 'tasks.html')
