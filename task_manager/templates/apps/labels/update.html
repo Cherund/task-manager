@@ -1,0 +1,10 @@
+{% extends "form.html" %}
+{% block header %}
+Изменение метки
+{% endblock %}
+
+{% block form_action %}
+{% url 'labels_update' pk=label.pk %}
+{% endblock %}
+
+{% block button_value %}Изменить{% endblock %}
