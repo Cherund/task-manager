@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'apps.labels',
     'apps.users',
     'apps.statuses',
+    'apps.tasks',
 
 ]
 
