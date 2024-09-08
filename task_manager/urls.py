@@ -19,11 +19,11 @@ from task_manager import views
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('users/', include('apps.users.urls')),
     path('login/', views.UserLoginView.as_view(), name='login'),
     path('logout/', views.UserLogoutView.as_view(), name='logout'),
+    path('users/', include('apps.users.urls')),
     path('statuses/', include('apps.statuses.urls')),
-    path('labels/', views.labels, name='labels'),
-    path('tasks/', views.tasks, name='tasks'),
+    path('labels/', include('apps.labels.urls')),
+    path('tasks/', include('apps.tasks.urls')),
     path('admin/', admin.site.urls, name='admin'),
 ]
