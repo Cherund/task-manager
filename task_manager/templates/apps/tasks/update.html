@@ -1,0 +1,10 @@
+{% extends "form.html" %}
+{% block header %}
+Изменение задачи
+{% endblock %}
+
+{% block form_action %}
+{% url 'tasks_update' pk=task.pk %}
+{% endblock %}
+
+{% block button_value %}Изменить{% endblock %}

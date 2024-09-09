@@ -4,77 +4,81 @@
 <div class="container wrapper flex-grow-1">
 
 
+    <h1 class="my-4">Задачи</h1>
 
-  <h1 class="my-4">Задачи</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'tasks_create' %}" role="button">Создать задачу</a>
 
-  <a class="btn btn-primary mb-3" href="/tasks/create/" role="button">Создать задачу</a>
+    <div class="card mb-3">
+        <div class="card-body bg-light">
+            {% for task in tasks %}
+            <form class="form-inline center" method="get">
+                <div class="mb-3">
+                    <label class="form-label" for="id_status">Статус</label>
+                    <select name="status" class="form-select ml-2 mr-3" id="id_status">
+                        <option value="" selected="">---------</option>
+                        <option value="{{ task.pk }}">{{ task.status }}</option>
 
-  <div class="card mb-3">
-    <div class="card-body bg-light">
-      <form class="form-inline center" method="get">
-        <div class="mb-3">
-          <label class="form-label" for="id_status">Статус</label>
-          <select name="status" class="form-select ml-2 mr-3" id="id_status">
-            <option value="" selected="">---------</option>
-            <option value="1">testЕукеп21</option>
+                    </select>
+                </div>
+                <div class="mb-3"><label class="form-label" for="id_executor">Исполнитель</label>
+                    <select name="executor" class="form-select mr-3 ml-2" id="id_executor">
+                        <option value="" selected="">---------</option>
 
-          </select>
+                        <option value="{{ task.pk }}">{{ task.executor }}</option>
+
+                    </select>
+                </div>
+                <div class="mb-3"><label class="form-label" for="id_label">Метка</label>
+                    <select name="label" class="form-select mr-3 ml-2" id="id_label">
+                        <option value="" selected="">---------</option>
+                        <option value="{{ task.pk }}">{{ task.labels }}</option>
+
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check"><input type="checkbox" name="self_tasks" class="form-check-input mr-3"
+                                                   id="id_self_tasks">
+                        <label class="form-check-label" for="id_self_tasks">Только свои задачи</label></div>
+                </div>
+                <input class="btn btn-primary" type="submit" value="Показать">
+            </form>
+            {% endfor %}
         </div>
-        <div class="mb-3"><label class="form-label" for="id_executor">Исполнитель</label>
-          <select name="executor" class="form-select mr-3 ml-2" id="id_executor">
-            <option value="" selected="">---------</option>
-
-            <option value="1">Артем Павелко</option>
-
-          </select>
-        </div>
-        <div class="mb-3"><label class="form-label" for="id_label">Метка</label>
-          <select name="label" class="form-select mr-3 ml-2" id="id_label">
-          <option value="" selected="">---------</option>
-          <option value="1">Просто метка</option>
-
-        </select>
-        </div>
-        <div class="mb-3"><div class="form-check"><input type="checkbox" name="self_tasks" class="form-check-input mr-3" id="id_self_tasks">
-          <label class="form-check-label" for="id_self_tasks">Только свои задачи</label></div></div>
-        <input class="btn btn-primary" type="submit" value="Показать">
-      </form>
     </div>
-  </div>
 
 
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Имя</th>
-      <th>Статус</th>
-      <th>Автор</th>
-      <th>Исполнитель</th>
-      <th>Дата создания</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <tr>
-      <td>1</td>
-      <td>
-        <a href="/tasks/1/">sdfккк</a>
-      </td>
-      <td>testЕукеп21</td>
-      <td>aaa sss</td>
-      <td>Артем Павелко</td>
-      <td>20.06.2024 16:03</td>
-      <td>
-        <a href="/tasks/1/update/">Изменить</a>
-        <br>
-        <a href="/tasks/1/delete/">Удалить</a>
-      </td>
-    </tr>
-
-    </tbody>
-  </table>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Статус</th>
+            <th>Автор</th>
+            <th>Исполнитель</th>
+            <th>Дата создания</th>
+            <th></th>
+        </tr>
+        </thead>
+        {% for task in tasks %}
+        <tbody>
+        <tr>
+            <td>{{task.id }}</td>
+            <td>
+                <a href="/tasks/1/">{{ task }}</a>
+            </td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.creator }}</td>
+            <td>{{ task.executor }}</td>
+            <td>{{ task.created_at }}</td>
+            <td>
+                <a href="{% url 'tasks_update' pk=task.pk %}">Изменить</a>
+                <br>
+                <a href="{% url 'tasks_delete' pk=task.pk %}">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
 
 </div>
 

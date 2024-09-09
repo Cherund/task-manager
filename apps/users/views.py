@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from apps.users.forms import CustomUserCreationForm, CustomUserChangeForm
-from task_manager.settings import LOGIN_URL
+from django.conf import settings
 from django.utils.translation import gettext as _
 from django.contrib import messages
 
@@ -19,7 +19,7 @@ class UserIndexView(ListView):
 class UserCreateView(SuccessMessageMixin, CreateView):
     template_name = 'apps/users/create.html'
     form_class = CustomUserCreationForm
-    success_url = LOGIN_URL
+    success_url = settings.LOGIN_URL
     success_message = _('The user has been successfully registered')
 
 
@@ -36,8 +36,7 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin,
         return self.request.user == user
 
     def handle_no_permission(self):
-        text_msg = _('У вас нет прав для изменения другого пользователя.')
-        messages.error(self.request, text_msg)
+        messages.error(self.request, _('You are not authorized to change another user.'))
         return redirect('users')
 
 
@@ -52,6 +51,5 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user == user
 
     def handle_no_permission(self):
-        text_msg = _('You are not authorized to change another user.')
-        messages.error(self.request, text_msg)
+        messages.error(self.request, _('You are not authorized to delete another user.'))
         return redirect('users')

@@ -1,0 +1,18 @@
+{% extends "form.html" %}
+{% block header %}
+Удаление задачи
+{% endblock %}
+
+{% block form_action %}
+{% url 'tasks_delete' pk=task.pk %}
+{% endblock %}
+
+{%block text %}
+Вы уверены, что хотите удалить {{ task }}?
+{% endblock %}
+
+{% block button_class %}
+btn-danger
+{% endblock %}
+
+{% block button_value %}Да, удалить{% endblock %}
