@@ -31,8 +31,9 @@
                 <div class="mb-3"><label class="form-label" for="id_label">Метка</label>
                     <select name="label" class="form-select mr-3 ml-2" id="id_label">
                         <option value="" selected="">---------</option>
-                        <option value="{{ task.pk }}">{{ task.labels }}</option>
-
+                        {% for label in task.labels.all %}
+                        <option value="{{ task.pk }}">{{ label }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="mb-3">
@@ -64,7 +65,7 @@
         <tr>
             <td>{{task.id }}</td>
             <td>
-                <a href="/tasks/1/">{{ task }}</a>
+                <a href="{% url 'tasks_single' pk=task.pk %}">{{ task }}</a>
             </td>
             <td>{{ task.status }}</td>
             <td>{{ task.creator }}</td>

@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, DeleteView, UpdateView
+from django.views.generic import CreateView, ListView, DeleteView, UpdateView, DetailView
 from apps.tasks.forms import TaskForm
 from django.utils.translation import gettext as _
 from apps.tasks.models import Task
@@ -55,3 +55,10 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     def handle_no_permission(self):
         messages.error(self.request, _('You are not authorized. Please, log in'))
         return redirect('login')
+
+
+class TaskSingleView(DetailView):
+    model = Task
+    template_name = 'apps/tasks/task.html'
+    context_object_name = 'task'
+
