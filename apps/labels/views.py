@@ -7,48 +7,33 @@ from django.utils.translation import gettext as _
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib import messages
+from task_manager.mixins import CustomLoginRequiredMixin
 
 
 # Create your views here.
-class LabelIndexView(LoginRequiredMixin, ListView):
+class LabelIndexView(CustomLoginRequiredMixin, ListView):
     template_name = 'apps/labels/labels.html'
     model = Label
     context_object_name = 'labels'
 
-    def handle_no_permission(self):
-        messages.error(self.request, _('You are not authorized. Please, log in'))
-        return redirect('login')
 
-
-class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class LabelCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'apps/labels/create.html'
     form_class = LabelForm
     success_url = reverse_lazy('labels')
     success_message = _('The label has been successfully created')
 
-    def handle_no_permission(self):
-        messages.error(self.request, _('You are not authorized. Please, log in'))
-        return redirect('login')
 
-
-class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class LabelUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Label
     form_class = LabelForm
     template_name = 'apps/labels/update.html'
     success_url = reverse_lazy('labels')
     success_message = _('The label has been successfully updated')
 
-    def handle_no_permission(self):
-        messages.error(self.request, _('You are not authorized. Please, log in'))
-        return redirect('login')
 
-
-class LabelDeleteView(DeleteView):
+class LabelDeleteView(CustomLoginRequiredMixin, DeleteView):
     model = Label
     template_name = 'apps/labels/delete.html'
     success_url = reverse_lazy('labels')
     success_message = _('The label has been successfully deleted.')
-
-    def handle_no_permission(self):
-        messages.error(self.request, _('You are not authorized. Please, log in'))
-        return redirect('login')

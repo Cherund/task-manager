@@ -7,48 +7,33 @@ from apps.statuses.models import Status
 from django.utils.translation import gettext as _
 from django.urls import reverse_lazy
 from django.contrib import messages
+from task_manager.mixins import CustomLoginRequiredMixin
 
 
 # Create your views here.
-class StatusIndexView(LoginRequiredMixin, ListView):
+class StatusIndexView(CustomLoginRequiredMixin, ListView):
     template_name = 'apps/statuses/statuses.html'
     model = Status
     context_object_name = 'statuses'
 
-    def handle_no_permission(self):
-        messages.error(self.request, _('You are not authorized. Please, log in'))
-        return redirect('login')
 
-
-class StatusCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class StatusCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'apps/statuses/create.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses')
     success_message = _('The status has been successfully created')
 
-    def handle_no_permission(self):
-        messages.error(self.request, _('You are not authorized. Please, log in'))
-        return redirect('login')
 
-
-class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class StatusUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Status
     form_class = StatusForm
     template_name = 'apps/statuses/update.html'
     success_url = reverse_lazy('statuses')
     success_message = _('The status has been successfully updated')
 
-    def handle_no_permission(self):
-        messages.error(self.request, _('You are not authorized. Please, log in'))
-        return redirect('login')
 
-
-class StatusDeleteView(LoginRequiredMixin, DeleteView):
+class StatusDeleteView(CustomLoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'apps/statuses/delete.html'
     success_url = reverse_lazy('statuses')
     success_message = _('The status has been successfully deleted.')
-
-    def handle_no_permission(self):
-        messages.error(self.request, _('You are not authorized. Please, log in'))
-        return redirect('login')
