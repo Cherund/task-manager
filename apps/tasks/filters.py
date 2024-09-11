@@ -8,7 +8,7 @@ from apps.tasks.models import Task
 class TaskFilter(filters.FilterSet):
     status = filters.ModelChoiceFilter(queryset=Status.objects.all(), label='Статус')
     executor = filters.ModelChoiceFilter(queryset=get_user_model().objects.all(), label='Исполнитель')
-    labels = filters.ModelMultipleChoiceFilter(queryset=Label.objects.all(), label='Метки')
+    labels = filters.ModelChoiceFilter(queryset=Label.objects.all(), label='Метка')
 
     class Meta:
         model = Task

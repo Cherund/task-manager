@@ -1,7 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils.translation import gettext as _
 from django.conf import settings
