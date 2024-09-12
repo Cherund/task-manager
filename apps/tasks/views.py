@@ -1,4 +1,3 @@
-
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView, DetailView
@@ -15,6 +14,9 @@ class TaskIndexView(CustomLoginRequiredMixin, FilterView, ListView):
     model = Task
     context_object_name = 'tasks'
     filterset_class = TaskFilter
+
+    def get_filterset(self, filterset_class):
+        return filterset_class(self.request.GET, queryset=self.get_queryset(), request=self.request)
 
 
 class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):

@@ -31,14 +31,14 @@ class UserUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin,
     form_class = CustomUserChangeForm
     template_name = 'apps/users/update.html'
     success_url = reverse_lazy('users')
-    success_message = _('The user has been successfully updated')
+    success_message = _('User successfully updated')
 
     def test_func(self):
         user = self.get_object()
         return self.request.user == user
 
     def handle_no_permission(self):
-        messages.error(self.request, _('You are not authorized to change another user.'))
+        messages.error(self.request, _('You do not have permission to modify another user.'))
         return redirect('users')
 
 
@@ -46,7 +46,7 @@ class UserDeleteView(CustomLoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = get_user_model()
     template_name = 'apps/users/delete.html'
     success_url = reverse_lazy('users')
-    success_message = _('The user has been successfully deleted.')
+    success_message = _('User successfully deleted')
 
     def test_func(self):
         user = self.get_object()

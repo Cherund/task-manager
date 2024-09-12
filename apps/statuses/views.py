@@ -29,11 +29,11 @@ class StatusUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView
     form_class = StatusForm
     template_name = 'apps/statuses/update.html'
     success_url = reverse_lazy('statuses')
-    success_message = _('The status has been successfully updated')
+    success_message = _('The status has been successfully changed')
 
 
 class StatusDeleteView(CustomLoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'apps/statuses/delete.html'
     success_url = reverse_lazy('statuses')
-    success_message = _('The status has been successfully deleted.')
+    success_message = _('The status has been successfully deleted')

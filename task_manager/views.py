@@ -15,7 +15,7 @@ class UserLoginView(SuccessMessageMixin, LoginView):
     template_name = 'login.html'
     form_class = AuthenticationForm
     success_url = settings.LOGIN_REDIRECT_URL
-    success_message = _('Вы залогинены')
+    success_message = _('You are logged in')
 
 
 class UserLogoutView(SuccessMessageMixin, LogoutView):

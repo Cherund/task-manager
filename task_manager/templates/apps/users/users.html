@@ -3,15 +3,15 @@
 {% block content %}
 <main class="container wrapper flex-grow-1">
     <h1 class="my-4">
-        Пользователи
+        {% trans 'Users' %}
     </h1>
     <table class="table table-striped">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Имя пользователя</th>
-            <th>Полное имя</th>
-            <th>Дата создания</th>
+            <th>{% trans 'Username' %}</th>
+            <th>{% trans 'Full name' %}</th>
+            <th>{% trans 'Created date' %}</th>
             <th></th>
         </tr>
         </thead>
@@ -23,9 +23,9 @@
             <td>{{ user }}</td>
             <td>{{ user.date_joined }}</td>
             <td>
-                <a href="{% url 'users_update' pk=user.pk %}">Изменить</a>
+                <a href="{% url 'users_update' pk=user.pk %}">{% trans 'Update' %}</a>
                 <br>
-                <a href="{% url 'users_delete' pk=user.pk %}">Удалить</a>
+                <a href="{% url 'users_delete' pk=user.pk %}">{% trans 'Delete' %}</a>
             </td>
         </tr>
 

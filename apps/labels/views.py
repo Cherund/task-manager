@@ -29,11 +29,11 @@ class LabelUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView)
     form_class = LabelForm
     template_name = 'apps/labels/update.html'
     success_url = reverse_lazy('labels')
-    success_message = _('The label has been successfully updated')
+    success_message = _('The label has been successfully changed')
 
 
 class LabelDeleteView(CustomLoginRequiredMixin, DeleteView):
     model = Label
     template_name = 'apps/labels/delete.html'
     success_url = reverse_lazy('labels')
-    success_message = _('The label has been successfully deleted.')
+    success_message = _('The label has been successfully deleted')

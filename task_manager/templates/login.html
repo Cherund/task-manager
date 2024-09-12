@@ -1,11 +1,11 @@
 {% extends "form.html" %}
 {% load django_bootstrap5 i18n %}
 {% block header %}
-Вход
+{% trans 'Login' %}
 {% endblock %}
 
 {% block form_action %}
 {% url 'login' %}
 {% endblock %}
 
-{% block button_value %}Войти{% endblock %}
+{% block button_value %}{% trans 'Sign in' %}{% endblock %}
