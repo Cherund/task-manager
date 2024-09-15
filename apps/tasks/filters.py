@@ -4,20 +4,20 @@ from apps.tasks.models import Task
 from apps.statuses.models import Status
 from apps.labels.models import Label
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext as _
 
 
 class TaskFilter(FilterSet):
     status = filters.ModelChoiceFilter(queryset=Status.objects.all(),
-                                       label='Status')
+                                       label=_('Status'))
     executor = filters.ModelChoiceFilter(queryset=get_user_model().objects.all(),
-                                         label='Executor')
+                                         label=_('Executor'))
     labels = filters.ModelChoiceFilter(queryset=Label.objects.all(),
-                                       label='Label')
-
+                                       label=_('Label'))
     my_tasks = filters.BooleanFilter(
         field_name='creator',
         method='filter_my_tasks',
-        label='Only your own tasks',
+        label=_('Only your own tasks'),
         widget=CheckboxInput()
     )
 
@@ -29,4 +29,6 @@ class TaskFilter(FilterSet):
         if value:
             return queryset.filter(creator=self.request.user)
         return queryset
+
+
 

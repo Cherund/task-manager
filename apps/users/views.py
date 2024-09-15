@@ -31,7 +31,7 @@ class UserUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin,
     form_class = CustomUserChangeForm
     template_name = 'apps/users/update.html'
     success_url = reverse_lazy('users')
-    success_message = _('User successfully updated')
+    success_message = _('The user has been successfully updated')
 
     def test_func(self):
         user = self.get_object()
@@ -46,7 +46,7 @@ class UserDeleteView(CustomLoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = get_user_model()
     template_name = 'apps/users/delete.html'
     success_url = reverse_lazy('users')
-    success_message = _('User successfully deleted')
+    success_message = _('The user has been successfully deleted')
 
     def test_func(self):
         user = self.get_object()

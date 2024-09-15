@@ -9,7 +9,7 @@ from django_filters.views import FilterView
 from task_manager.mixins import CustomLoginRequiredMixin
 
 
-class TaskIndexView(CustomLoginRequiredMixin, FilterView, ListView):
+class TaskIndexView(CustomLoginRequiredMixin, FilterView):
     template_name = 'apps/tasks/tasks.html'
     model = Task
     context_object_name = 'tasks'
@@ -42,7 +42,7 @@ class TaskDeleteView(CustomLoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'apps/tasks/delete.html'
     success_url = reverse_lazy('tasks')
-    success_message = _('The task has been successfully deleted.')
+    success_message = _('The task has been successfully deleted')
 
 
 class TaskSingleView(DetailView):

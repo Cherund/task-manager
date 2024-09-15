@@ -1,0 +1,319 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-14 12:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/labels/views.py:24
+msgid "The label has been successfully created"
+msgstr ""
+
+#: apps/labels/views.py:32
+msgid "The label has been successfully changed"
+msgstr ""
+
+#: apps/labels/views.py:39
+msgid "The label has been successfully deleted"
+msgstr ""
+
+#: apps/statuses/views.py:24
+msgid "The status has been successfully created"
+msgstr ""
+
+#: apps/statuses/views.py:32
+msgid "The status has been successfully changed"
+msgstr ""
+
+#: apps/statuses/views.py:39
+msgid "The status has been successfully deleted"
+msgstr ""
+
+#: apps/tasks/filters.py:41
+msgid "Only your own tasks"
+msgstr ""
+
+#: apps/tasks/models.py:9
+msgid "name"
+msgstr ""
+
+#: apps/tasks/models.py:10
+msgid "description"
+msgstr ""
+
+#: apps/tasks/models.py:15
+msgid "status"
+msgstr ""
+
+#: apps/tasks/models.py:20
+msgid "creator"
+msgstr ""
+
+#: apps/tasks/models.py:28
+msgid "executor"
+msgstr ""
+
+#: apps/tasks/models.py:34
+msgid "labels"
+msgstr ""
+
+#: apps/tasks/models.py:39
+msgid "created at"
+msgstr ""
+
+#: apps/tasks/models.py:46
+msgid "Task"
+msgstr ""
+
+#: apps/tasks/models.py:47 task_manager/templates/apps/tasks/tasks.html:8
+#: task_manager/templates/includes/nav.html:21
+msgid "Tasks"
+msgstr ""
+
+#: apps/tasks/views.py:26
+msgid "The task has been successfully registered"
+msgstr ""
+
+#: apps/tasks/views.py:38
+msgid "The task has been successfully updated"
+msgstr ""
+
+#: apps/tasks/views.py:45
+msgid "The task has been successfully deleted."
+msgstr ""
+
+#: apps/users/views.py:25
+msgid "The user has been successfully registered"
+msgstr ""
+
+#: apps/users/views.py:34
+msgid "User successfully updated"
+msgstr ""
+
+#: apps/users/views.py:41
+msgid "You do not have permission to modify another user."
+msgstr ""
+
+#: apps/users/views.py:49
+msgid "User successfully deleted"
+msgstr ""
+
+#: apps/users/views.py:56
+msgid "You are not authorized to delete another user."
+msgstr ""
+
+#: task_manager/mixins.py:11
+msgid "You are not logged in! Please log in."
+msgstr ""
+
+#: task_manager/templates/apps/labels/create.html:4
+#: task_manager/templates/apps/labels/labels.html:14
+msgid "Create label"
+msgstr ""
+
+#: task_manager/templates/apps/labels/create.html:11
+#: task_manager/templates/apps/statuses/create.html:11
+#: task_manager/templates/apps/tasks/create.html:11
+msgid "Create"
+msgstr ""
+
+#: task_manager/templates/apps/labels/delete.html:4
+msgid "Deleting a label"
+msgstr ""
+
+#: task_manager/templates/apps/labels/delete.html:12
+#: task_manager/templates/apps/statuses/delete.html:12
+#: task_manager/templates/apps/tasks/delete.html:12
+#: task_manager/templates/apps/users/delete.html:12
+msgid "Are you sure you want to delete"
+msgstr ""
+
+#: task_manager/templates/apps/labels/delete.html:19
+#: task_manager/templates/apps/statuses/delete.html:19
+#: task_manager/templates/apps/tasks/delete.html:19
+#: task_manager/templates/apps/users/delete.html:19
+msgid "Yes, delete"
+msgstr ""
+
+#: task_manager/templates/apps/labels/labels.html:10
+#: task_manager/templates/apps/tasks/task.html:41
+#: task_manager/templates/includes/nav.html:18
+msgid "Labels"
+msgstr ""
+
+#: task_manager/templates/apps/labels/labels.html:19
+#: task_manager/templates/apps/statuses/statuses.html:19
+#: task_manager/templates/apps/tasks/tasks.html:29
+msgid "Name"
+msgstr ""
+
+#: task_manager/templates/apps/labels/labels.html:20
+#: task_manager/templates/apps/statuses/statuses.html:20
+#: task_manager/templates/apps/tasks/task.html:36
+msgid "Date and time of creation"
+msgstr ""
+
+#: task_manager/templates/apps/labels/labels.html:31
+#: task_manager/templates/apps/labels/update.html:11
+#: task_manager/templates/apps/statuses/statuses.html:31
+#: task_manager/templates/apps/statuses/update.html:11
+#: task_manager/templates/apps/tasks/task.html:53
+#: task_manager/templates/apps/tasks/tasks.html:49
+#: task_manager/templates/apps/tasks/update.html:11
+#: task_manager/templates/apps/users/update.html:11
+#: task_manager/templates/apps/users/users.html:26
+msgid "Update"
+msgstr ""
+
+#: task_manager/templates/apps/labels/labels.html:33
+#: task_manager/templates/apps/statuses/statuses.html:33
+#: task_manager/templates/apps/tasks/task.html:55
+#: task_manager/templates/apps/tasks/tasks.html:51
+#: task_manager/templates/apps/users/users.html:28
+msgid "Delete"
+msgstr ""
+
+#: task_manager/templates/apps/labels/update.html:4
+msgid "Update label"
+msgstr ""
+
+#: task_manager/templates/apps/statuses/create.html:4
+msgid "Create status"
+msgstr ""
+
+#: task_manager/templates/apps/statuses/delete.html:4
+msgid "Deleting a status"
+msgstr ""
+
+#: task_manager/templates/apps/statuses/update.html:4
+msgid "Update status"
+msgstr ""
+
+#: task_manager/templates/apps/tasks/create.html:4
+#: task_manager/templates/apps/tasks/tasks.html:10
+msgid "Create task"
+msgstr ""
+
+#: task_manager/templates/apps/tasks/delete.html:4
+msgid "Deliting a task"
+msgstr ""
+
+#: task_manager/templates/apps/tasks/task.html:10
+msgid "Viewing a task"
+msgstr ""
+
+#: task_manager/templates/apps/tasks/task.html:24
+#: task_manager/templates/apps/tasks/tasks.html:31
+msgid "Author"
+msgstr ""
+
+#: task_manager/templates/apps/tasks/task.html:28
+#: task_manager/templates/apps/tasks/tasks.html:32
+msgid "Executor"
+msgstr ""
+
+#: task_manager/templates/apps/tasks/task.html:32
+#: task_manager/templates/apps/tasks/tasks.html:30
+msgid "Status"
+msgstr ""
+
+#: task_manager/templates/apps/tasks/tasks.html:19
+msgid "Show"
+msgstr ""
+
+#: task_manager/templates/apps/tasks/tasks.html:33
+#: task_manager/templates/apps/users/users.html:14
+msgid "Created date"
+msgstr ""
+
+#: task_manager/templates/apps/tasks/update.html:4
+msgid "Update task"
+msgstr ""
+
+#: task_manager/templates/apps/users/create.html:4
+#: task_manager/templates/includes/nav.html:39
+msgid "Registration"
+msgstr ""
+
+#: task_manager/templates/apps/users/create.html:11
+msgid "Register"
+msgstr ""
+
+#: task_manager/templates/apps/users/delete.html:4
+msgid "Deleting user"
+msgstr ""
+
+#: task_manager/templates/apps/users/update.html:4
+msgid "Update user"
+msgstr ""
+
+#: task_manager/templates/apps/users/users.html:6
+#: task_manager/templates/includes/nav.html:10
+msgid "Users"
+msgstr ""
+
+#: task_manager/templates/apps/users/users.html:12
+msgid "Username"
+msgstr ""
+
+#: task_manager/templates/apps/users/users.html:13
+msgid "Full name"
+msgstr ""
+
+#: task_manager/templates/base.html:10
+msgid "Task manager"
+msgstr ""
+
+#: task_manager/templates/includes/nav.html:3
+msgid "Task Manager"
+msgstr ""
+
+#: task_manager/templates/includes/nav.html:15
+msgid "Statuses"
+msgstr ""
+
+#: task_manager/templates/includes/nav.html:32
+msgid "Logout"
+msgstr ""
+
+#: task_manager/templates/includes/nav.html:36
+#: task_manager/templates/login.html:4
+msgid "Login"
+msgstr ""
+
+#: task_manager/templates/index.html:8
+msgid "Greetings to all!"
+msgstr ""
+
+#: task_manager/templates/index.html:9
+msgid "This is a web application for structuring your tasks"
+msgstr ""
+
+#: task_manager/templates/index.html:11
+msgid "Click to go to my github page"
+msgstr ""
+
+#: task_manager/templates/login.html:11
+msgid "Sign in"
+msgstr ""
+
+#: task_manager/views.py:18
+msgid "You are logged in"
+msgstr ""
+
+#: task_manager/views.py:25
+msgid "You are logged out"
+msgstr ""
