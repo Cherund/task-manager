@@ -38,7 +38,7 @@ class UserUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin,
         return self.request.user == user
 
     def handle_no_permission(self):
-        messages.error(self.request, _('You do not have permission to modify another user.'))
+        messages.error(self.request, _('You are not authorized to modify another user.'))
         return redirect('users')
 
 
@@ -54,5 +54,5 @@ class UserDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin,
         return self.request.user == user
 
     def handle_no_permission(self):
-        messages.error(self.request, _('You are not authorized to delete another user.'))
+        messages.error(self.request, _('You are not authorized to modify another user.'))
         return redirect('users')

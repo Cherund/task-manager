@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 19:00+0000\n"
+"POT-Creation-Date: 2024-09-16 19:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,17 +118,13 @@ msgstr "Пользователь успешно зарегистрирован"
 msgid "The user has been successfully updated"
 msgstr "Пользователь успешно изменен"
 
-#: apps/users/views.py:41
-msgid "You do not have permission to modify another user."
+#: apps/users/views.py:41 apps/users/views.py:57
+msgid "You are not authorized to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
 #: apps/users/views.py:50
 msgid "The user has been successfully deleted"
 msgstr "Пользователь успешно удален"
-
-#: apps/users/views.py:57
-msgid "You are not authorized to delete another user."
-msgstr "У вас нет прав для удаления другого пользователя."
 
 #: task_manager/mixins.py:11
 msgid "You are not logged in! Please log in."
@@ -322,3 +318,6 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:25
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "You do not have permission to modify another user."
+#~ msgstr "У вас нет прав для изменения другого пользователя."
