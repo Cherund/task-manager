@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 13:12+0000\n"
+"POT-Creation-Date: 2024-09-16 19:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,10 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps/labels/models.py:8 apps/statuses/models.py:8 apps/tasks/models.py:9
+msgid "name"
+msgstr "имя"
 
 #: apps/labels/views.py:24
 msgid "The label has been successfully created"
@@ -60,10 +64,6 @@ msgstr "Метка"
 #: apps/tasks/filters.py:20
 msgid "Only your own tasks"
 msgstr "Только свои задачи"
-
-#: apps/tasks/models.py:9
-msgid "name"
-msgstr "имя"
 
 #: apps/tasks/models.py:10
 msgid "description"
@@ -122,11 +122,11 @@ msgstr "Пользователь успешно изменен"
 msgid "You do not have permission to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: apps/users/views.py:49
+#: apps/users/views.py:50
 msgid "The user has been successfully deleted"
 msgstr "Пользователь успешно удален"
 
-#: apps/users/views.py:56
+#: apps/users/views.py:57
 msgid "You are not authorized to delete another user."
 msgstr "У вас нет прав для удаления другого пользователя."
 
