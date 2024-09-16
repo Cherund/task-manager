@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-14 12:54+0000\n"
+"POT-Creation-Date: 2024-09-16 13:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: apps/labels/views.py:24
 msgid "The label has been successfully created"
 msgstr "Метка успешно создана"
@@ -43,7 +43,21 @@ msgstr "Статус успешно изменен"
 msgid "The status has been successfully deleted"
 msgstr "Статус успешно удален"
 
-#: apps/tasks/filters.py:41
+#: apps/tasks/filters.py:12 task_manager/templates/apps/tasks/task.html:32
+#: task_manager/templates/apps/tasks/tasks.html:30
+msgid "Status"
+msgstr "Статус"
+
+#: apps/tasks/filters.py:14 task_manager/templates/apps/tasks/task.html:28
+#: task_manager/templates/apps/tasks/tasks.html:32
+msgid "Executor"
+msgstr "Исполнитель"
+
+#: apps/tasks/filters.py:16
+msgid "Label"
+msgstr "Метка"
+
+#: apps/tasks/filters.py:20
 msgid "Only your own tasks"
 msgstr "Только свои задачи"
 
@@ -220,16 +234,6 @@ msgstr "Просмотр задачи"
 #: task_manager/templates/apps/tasks/tasks.html:31
 msgid "Author"
 msgstr "Автор"
-
-#: task_manager/templates/apps/tasks/task.html:28
-#: task_manager/templates/apps/tasks/tasks.html:32
-msgid "Executor"
-msgstr "Исполнитель"
-
-#: task_manager/templates/apps/tasks/task.html:32
-#: task_manager/templates/apps/tasks/tasks.html:30
-msgid "Status"
-msgstr "Статус"
 
 #: task_manager/templates/apps/tasks/tasks.html:19
 msgid "Show"
