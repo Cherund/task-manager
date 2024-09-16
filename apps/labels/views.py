@@ -32,7 +32,7 @@ class LabelUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView)
     success_message = _('The label has been successfully changed')
 
 
-class LabelDeleteView(CustomLoginRequiredMixin, DeleteView):
+class LabelDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Label
     template_name = 'apps/labels/delete.html'
     success_url = reverse_lazy('labels')

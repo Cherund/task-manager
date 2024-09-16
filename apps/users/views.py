@@ -42,7 +42,7 @@ class UserUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin,
         return redirect('users')
 
 
-class UserDeleteView(CustomLoginRequiredMixin,SuccessMessageMixin,
+class UserDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin,
                      UserPassesTestMixin, DeleteView):
     model = get_user_model()
     template_name = 'apps/users/delete.html'

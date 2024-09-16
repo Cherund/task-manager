@@ -38,7 +38,7 @@ class TaskUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = _('The task has been successfully updated')
 
 
-class TaskDeleteView(CustomLoginRequiredMixin, DeleteView):
+class TaskDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Task
     template_name = 'apps/tasks/delete.html'
     success_url = reverse_lazy('tasks')
