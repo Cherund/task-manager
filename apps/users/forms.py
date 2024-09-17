@@ -12,5 +12,3 @@ class CustomUserChangeForm(CustomUserCreationForm):
 
     def clean_username(self):
         return self.cleaned_data.get('username')
-
-
