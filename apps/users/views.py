@@ -9,8 +9,6 @@ from django.conf import settings
 from django.utils.translation import gettext as _
 from django.contrib import messages
 
-from task_manager.mixins import CustomLoginRequiredMixin
-
 
 class UserIndexView(ListView):
     template_name = 'apps/users/users.html'
@@ -25,8 +23,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_message = _('The user has been successfully registered')
 
 
-class UserUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin,
-                     UserPassesTestMixin, UpdateView):
+class UserUpdateView(SuccessMessageMixin, UserPassesTestMixin, UpdateView):
     model = get_user_model()
     form_class = CustomUserChangeForm
     template_name = 'apps/users/update.html'
@@ -42,8 +39,7 @@ class UserUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin,
         return redirect('users')
 
 
-class UserDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin,
-                     UserPassesTestMixin, DeleteView):
+class UserDeleteView(SuccessMessageMixin, UserPassesTestMixin, DeleteView):
     model = get_user_model()
     template_name = 'apps/users/delete.html'
     success_url = reverse_lazy('users')
