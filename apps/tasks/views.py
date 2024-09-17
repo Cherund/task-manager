@@ -46,11 +46,21 @@ class TaskDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy('tasks')
     success_message = _('The task has been successfully deleted')
 
-    def post(self, request, *args, **kwargs):
-        if self.get_object().tasks.exists():
+    def check_task_creator(self):
+        if self.get_object().creator != self.request.user:
             messages.error(
                 self.request,
-                _('Unable to delete a task because it is being used'))
+                _('Only the author of the task can delete it'))
+            return False
+        return True
+
+    def get(self, request, *args, **kwargs):
+        if not self.check_task_creator():
+            return redirect('tasks')
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        if not self.check_task_creator():
             return redirect('tasks')
         return super().post(request, *args, **kwargs)
 

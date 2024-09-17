@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-17 13:47+0000\n"
+"POT-Creation-Date: 2024-09-17 14:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,22 +119,22 @@ msgid "The task has been successfully deleted"
 msgstr "Задача успешно удалена"
 
 #: apps/tasks/views.py:53
-msgid "Unable to delete a task because it is being used"
-msgstr "Невозможно удалить задачу, потому что она используется"
+msgid "Only the author of the task can delete it"
+msgstr "Только автор задачи может ее удалить"
 
-#: apps/users/views.py:25
+#: apps/users/views.py:23
 msgid "The user has been successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: apps/users/views.py:33
+#: apps/users/views.py:31
 msgid "The user has been successfully updated"
 msgstr "Пользователь успешно изменен"
 
-#: apps/users/views.py:40 apps/users/views.py:55
+#: apps/users/views.py:38 apps/users/views.py:53
 msgid "You are not authorized to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: apps/users/views.py:48
+#: apps/users/views.py:46
 msgid "The user has been successfully deleted"
 msgstr "Пользователь успешно удален"
 
@@ -330,6 +330,9 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:25
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Unable to delete a task because it is being used"
+#~ msgstr "Невозможно удалить задачу, потому что она используется"
 
 #~ msgid "You do not have permission to modify another user."
 #~ msgstr "У вас нет прав для изменения другого пользователя."
