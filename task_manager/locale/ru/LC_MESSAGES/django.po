@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 19:12+0000\n"
+"POT-Creation-Date: 2024-09-17 13:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,10 @@ msgstr "Метка успешно изменена"
 msgid "The label has been successfully deleted"
 msgstr "Метка успешно удалена"
 
+#: apps/labels/views.py:45
+msgid "Unable to delete a label because it is being used"
+msgstr "Невозможно удалить метку, потому что она используется"
+
 #: apps/statuses/views.py:24
 msgid "The status has been successfully created"
 msgstr "Статус успешно создан"
@@ -46,6 +50,10 @@ msgstr "Статус успешно изменен"
 #: apps/statuses/views.py:39
 msgid "The status has been successfully deleted"
 msgstr "Статус успешно удален"
+
+#: apps/statuses/views.py:45
+msgid "Unable to delete a status because it is being used"
+msgstr "Невозможно удалить статус, потому что он используется"
 
 #: apps/tasks/filters.py:12 task_manager/templates/apps/tasks/task.html:32
 #: task_manager/templates/apps/tasks/tasks.html:30

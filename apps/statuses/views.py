@@ -37,3 +37,11 @@ class StatusDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView
     template_name = 'apps/statuses/delete.html'
     success_url = reverse_lazy('statuses')
     success_message = _('The status has been successfully deleted')
+
+    def post(self, request, *args, **kwargs):
+        if self.get_object().tasks.exists():
+            messages.error(
+                self.request,
+                _('Unable to delete a status because it is being used'))
+            return redirect('statuses')
+        return super().post(request, *args, **kwargs)
