@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-17 13:33+0000\n"
+"POT-Creation-Date: 2024-09-17 13:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,19 +39,19 @@ msgstr "Метка успешно удалена"
 msgid "Unable to delete a label because it is being used"
 msgstr "Невозможно удалить метку, потому что она используется"
 
-#: apps/statuses/views.py:24
+#: apps/statuses/views.py:23
 msgid "The status has been successfully created"
 msgstr "Статус успешно создан"
 
-#: apps/statuses/views.py:32
+#: apps/statuses/views.py:31
 msgid "The status has been successfully changed"
 msgstr "Статус успешно изменен"
 
-#: apps/statuses/views.py:39
+#: apps/statuses/views.py:38
 msgid "The status has been successfully deleted"
 msgstr "Статус успешно удален"
 
-#: apps/statuses/views.py:45
+#: apps/statuses/views.py:44
 msgid "Unable to delete a status because it is being used"
 msgstr "Невозможно удалить статус, потому что он используется"
 
@@ -106,31 +106,35 @@ msgstr "Задача"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: apps/tasks/views.py:26
+#: apps/tasks/views.py:28
 msgid "The task has been successfully registered"
 msgstr "Задача успешно создана"
 
-#: apps/tasks/views.py:38
+#: apps/tasks/views.py:40
 msgid "The task has been successfully updated"
 msgstr "Задача успешно изменена"
 
-#: apps/tasks/views.py:45
+#: apps/tasks/views.py:47
 msgid "The task has been successfully deleted"
 msgstr "Задача успешно удалена"
+
+#: apps/tasks/views.py:53
+msgid "Unable to delete a task because it is being used"
+msgstr "Невозможно удалить задачу, потому что она используется"
 
 #: apps/users/views.py:25
 msgid "The user has been successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: apps/users/views.py:34
+#: apps/users/views.py:33
 msgid "The user has been successfully updated"
 msgstr "Пользователь успешно изменен"
 
-#: apps/users/views.py:41 apps/users/views.py:57
+#: apps/users/views.py:40 apps/users/views.py:55
 msgid "You are not authorized to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: apps/users/views.py:50
+#: apps/users/views.py:48
 msgid "The user has been successfully deleted"
 msgstr "Пользователь успешно удален"
 
