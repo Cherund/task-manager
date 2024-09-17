@@ -1,4 +1,6 @@
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView, DetailView
 from apps.tasks.filters import TaskFilter
@@ -43,6 +45,14 @@ class TaskDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     template_name = 'apps/tasks/delete.html'
     success_url = reverse_lazy('tasks')
     success_message = _('The task has been successfully deleted')
+
+    def post(self, request, *args, **kwargs):
+        if self.get_object().tasks.exists():
+            messages.error(
+                self.request,
+                _('Unable to delete a task because it is being used'))
+            return redirect('tasks')
+        return super().post(request, *args, **kwargs)
 
 
 class TaskSingleView(DetailView):
