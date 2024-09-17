@@ -16,13 +16,13 @@ class Task(models.Model):
     )
     creator = models.ForeignKey(
         get_user_model(),
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name=_('creator'),
         related_name='creator_tasks',
     )
     executor = models.ForeignKey(
         get_user_model(),
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         blank=True,
         null=True,
         verbose_name=_('executor'),
