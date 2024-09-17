@@ -120,7 +120,7 @@ msgstr "Задача успешно удалена"
 
 #: apps/tasks/views.py:53
 msgid "Only the author of the task can delete it"
-msgstr "Только автор задачи может ее удалить"
+msgstr "Задачу может удалить только ее автор"
 
 #: apps/users/views.py:23
 msgid "The user has been successfully registered"
