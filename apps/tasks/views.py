@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, DeleteView, UpdateView, DetailView
+from django.views.generic import CreateView, DeleteView, UpdateView, DetailView
 from apps.tasks.filters import TaskFilter
 from apps.tasks.forms import TaskForm
 from django.utils.translation import gettext as _
@@ -69,4 +69,3 @@ class TaskSingleView(DetailView):
     model = Task
     template_name = 'apps/tasks/task.html'
     context_object_name = 'task'
-

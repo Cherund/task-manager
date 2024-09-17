@@ -29,6 +29,3 @@ class TaskFilter(FilterSet):
         if value:
             return queryset.filter(creator=self.request.user)
         return queryset
-
-
-
