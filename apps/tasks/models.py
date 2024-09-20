@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from apps.statuses.models import Status
 from apps.labels.models import Label
@@ -35,7 +36,7 @@ class Task(models.Model):
         related_name='tasks',
     )
     created_at = models.DateTimeField(
-        auto_now_add=True,
+        default=timezone.now,
         verbose_name=_('created at')
     )
 
