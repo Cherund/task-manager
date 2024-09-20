@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-17 14:08+0000\n"
+"POT-Creation-Date: 2024-09-20 08:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,23 +19,27 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps/labels/models.py:8 apps/statuses/models.py:8 apps/tasks/models.py:9
+#: apps/labels/models.py:8 apps/statuses/models.py:8 apps/tasks/models.py:10
 msgid "name"
 msgstr "имя"
 
-#: apps/labels/views.py:24
+#: apps/labels/models.py:9 apps/statuses/models.py:9 apps/tasks/models.py:40
+msgid "created at"
+msgstr "Дата создания"
+
+#: apps/labels/views.py:23
 msgid "The label has been successfully created"
 msgstr "Метка успешно создана"
 
-#: apps/labels/views.py:32
+#: apps/labels/views.py:31
 msgid "The label has been successfully changed"
 msgstr "Метка успешно изменена"
 
-#: apps/labels/views.py:39
+#: apps/labels/views.py:38
 msgid "The label has been successfully deleted"
 msgstr "Метка успешно удалена"
 
-#: apps/labels/views.py:45
+#: apps/labels/views.py:44
 msgid "Unable to delete a label because it is being used"
 msgstr "Невозможно удалить метку, потому что она используется"
 
@@ -73,35 +77,31 @@ msgstr "Метка"
 msgid "Only your own tasks"
 msgstr "Только свои задачи"
 
-#: apps/tasks/models.py:10
+#: apps/tasks/models.py:11
 msgid "description"
 msgstr "описание"
 
-#: apps/tasks/models.py:15
+#: apps/tasks/models.py:16
 msgid "status"
 msgstr "статус"
 
-#: apps/tasks/models.py:20
+#: apps/tasks/models.py:21
 msgid "creator"
 msgstr "автор"
 
-#: apps/tasks/models.py:28
+#: apps/tasks/models.py:29
 msgid "executor"
 msgstr "исполнитель"
 
-#: apps/tasks/models.py:34
+#: apps/tasks/models.py:35
 msgid "labels"
 msgstr "метки"
 
-#: apps/tasks/models.py:39
-msgid "created at"
-msgstr "Дата создания"
-
-#: apps/tasks/models.py:46
+#: apps/tasks/models.py:47
 msgid "Task"
 msgstr "Задача"
 
-#: apps/tasks/models.py:47 task_manager/templates/apps/tasks/tasks.html:8
+#: apps/tasks/models.py:48 task_manager/templates/apps/tasks/tasks.html:8
 #: task_manager/templates/includes/nav.html:21
 msgid "Tasks"
 msgstr "Задачи"
