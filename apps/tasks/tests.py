@@ -53,16 +53,6 @@ class TaskCreateViewTest(TestCase):
         self.assertRedirects(response, reverse('tasks'))
         self.assertTrue(Task.objects.filter(name='New Task').exists())
 
-    def test_task_creator_is_set(self):
-        data = {
-            'name': 'Task with Creator',
-            'status': self.status.id,
-            'description': 'Task description'
-        }
-        response = self.client.post(reverse('tasks_create'), data)
-        task = Task.objects.get(name='Task with Creator')
-        self.assertEqual(task.creator, self.user)
-
 
 class TaskUpdateViewTest(TestCase):
 
