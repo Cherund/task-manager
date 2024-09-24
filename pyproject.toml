@@ -10,15 +10,48 @@ packages = [{include="task_manager"},]
 python = ">=3.10,<4.0"
 django = "^5.0.7"
 python-dotenv = "^1.0.1"
-flake8 = "^7.1.0"
 psycopg2-binary = "^2.9.9"
 django-bootstrap5 = "^24.2"
 dj-database-url = "^2.2.0"
 django-filter = "^24.3"
 djangorestframework = "^3.15.2"
 gunicorn = "^23.0.0"
+coverage = "^7.6.1"
+pyproject-flake8 = "^7.0.0"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.flake8]
+accept-encodings = "utf-8"
+max-complexity = 6
+statistics = false
+max-line-length = 79
+enable-extensions = "G"
+isort-show-traceback = true
+exclude = [
+    ".venv",
+    ".git",
+    ".env",
+    "dist",
+    "build"
+]
+per-file-ignores = [
+    "__init__.py: F401"
+]
+ignore = [
+    "E501",
+    "W504",
+    "C901"
+]
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+default_section = "FIRSTPARTY"
+line_length = 79
+
+
