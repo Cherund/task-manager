@@ -1,14 +1,17 @@
 install:
 	poetry install
 
+migrate:
+	poetry run python manage.py migrate
+
 lint:
-	poetry run flake8 apps task_manager
+	poetry run pflake8 apps task_manager
 
 run:
 	poetry run python manage.py runserver
 
 test:
-	poetry run python ./manage.py test
+	poetry run coverage run manage.py test
 
 PORT ?= 8000
 start:
