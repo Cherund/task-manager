@@ -6,7 +6,7 @@ from apps.statuses.models import Status
 from django.utils.translation import gettext as _
 from django.urls import reverse_lazy
 from django.contrib import messages
-from task_manager.mixins import CustomLoginRequiredMixin
+from apps.core.mixins import CustomLoginRequiredMixin
 
 
 # Create your views here.

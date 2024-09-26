@@ -8,7 +8,7 @@ from apps.tasks.forms import TaskForm
 from django.utils.translation import gettext as _
 from apps.tasks.models import Task
 from django_filters.views import FilterView
-from task_manager.mixins import CustomLoginRequiredMixin
+from apps.core.mixins import CustomLoginRequiredMixin
 
 
 class TaskIndexView(CustomLoginRequiredMixin, FilterView):
