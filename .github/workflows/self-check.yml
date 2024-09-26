@@ -34,8 +34,7 @@ jobs:
         uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         with:
           coverageCommand: make test
           debug: true
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
