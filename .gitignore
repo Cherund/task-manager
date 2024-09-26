@@ -3,3 +3,4 @@
 /dist/
 task_manager/.env
 db.sqlite3
+.coverage
