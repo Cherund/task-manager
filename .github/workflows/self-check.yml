@@ -21,6 +21,11 @@ jobs:
       - name: install-dependencies
         run: pip install poetry && make install
 
+      - name: Set up database connection
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          echo "Using database at: $DATABASE_URL"
+
       - name: check linter
         run: make lint
 
