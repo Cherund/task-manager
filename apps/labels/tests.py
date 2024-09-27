@@ -1,7 +1,5 @@
-from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-
 from apps.core.mixins import SetUpLoggedUserMixin
 from apps.labels.forms import LabelForm
 from apps.labels.models import Label

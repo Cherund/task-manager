@@ -1,7 +1,5 @@
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth import get_user_model
-
 from apps.core.mixins import SetUpLoggedUserMixin
 from apps.tasks.models import Task
 from apps.statuses.models import Status
