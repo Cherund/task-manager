@@ -1,17 +1,13 @@
 from django.test import TestCase
 from django.urls import reverse
-from apps.core.mixins import SetUpLoggedUserMixin
+from apps.core.mixins import SetUpLoggedUserMixin, SetUpLoggedUserWithStatusMixin
 from apps.statuses.forms import StatusForm
 from apps.statuses.models import Status
 from apps.tasks.models import Task
 from django.utils.translation import gettext as _
 
 
-class StatusIndexViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.status = Status.objects.create(name='Test Status')
+class StatusIndexViewTest(SetUpLoggedUserWithStatusMixin, TestCase):
 
     def test_status_list_view_status_code(self):
         response = self.client.get(reverse('statuses'))
@@ -45,11 +41,7 @@ class StatusCreateViewTest(SetUpLoggedUserMixin, TestCase):
         self.assertTrue(Status.objects.filter(name='New Status').exists())
 
 
-class StatusUpdateViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.status = Status.objects.create(name='Test Status')
+class StatusUpdateViewTest(SetUpLoggedUserWithStatusMixin, TestCase):
 
     def test_update_status_view_status_code(self):
         response = self.client.get(reverse('statuses_update',
@@ -66,11 +58,7 @@ class StatusUpdateViewTest(SetUpLoggedUserMixin, TestCase):
         self.assertEqual(self.status.name, 'Updated Status')
 
 
-class StatusDeleteViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.status = Status.objects.create(name='Test Status')
+class StatusDeleteViewTest(SetUpLoggedUserWithStatusMixin, TestCase):
 
     def test_delete_status_view_status_code(self):
         response = self.client.get(reverse('statuses_delete',

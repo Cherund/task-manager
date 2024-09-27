@@ -1,18 +1,10 @@
 from django.test import TestCase
 from django.urls import reverse
-from apps.core.mixins import SetUpLoggedUserMixin
+from apps.core.mixins import SetUpLoggedUserWithTaskMixin, SetUpLoggedUserWithStatusMixin
 from apps.tasks.models import Task
-from apps.statuses.models import Status
 
 
-class TaskIndexViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.status = Status.objects.create(name='In Progress')
-        self.task = Task.objects.create(name='Test Task',
-                                        status=self.status,
-                                        creator=self.user)
+class TaskIndexViewTest(SetUpLoggedUserWithTaskMixin, TestCase):
 
     def test_task_list_view_status_code(self):
         response = self.client.get(reverse('tasks'))
@@ -29,11 +21,7 @@ class TaskIndexViewTest(SetUpLoggedUserMixin, TestCase):
         self.assertEqual(response.context['tasks'][0].name, 'Test Task')
 
 
-class TaskCreateViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.status = Status.objects.create(name='To Do')
+class TaskCreateViewTest(SetUpLoggedUserWithStatusMixin, TestCase):
 
     def test_create_task_view_status_code(self):
         response = self.client.get(reverse('tasks_create'))
@@ -50,14 +38,7 @@ class TaskCreateViewTest(SetUpLoggedUserMixin, TestCase):
         self.assertTrue(Task.objects.filter(name='New Task').exists())
 
 
-class TaskUpdateViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.status = Status.objects.create(name='In Progress')
-        self.task = Task.objects.create(name='Task to Update',
-                                        status=self.status,
-                                        creator=self.user)
+class TaskUpdateViewTest(SetUpLoggedUserWithTaskMixin, TestCase):
 
     def test_update_task_view_status_code(self):
         response = self.client.get(reverse('tasks_update',
@@ -78,14 +59,7 @@ class TaskUpdateViewTest(SetUpLoggedUserMixin, TestCase):
         self.assertEqual(self.task.description, 'Updated description')
 
 
-class TaskDeleteViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.status = Status.objects.create(name='To Do')
-        self.task = Task.objects.create(name='Task to Delete',
-                                        status=self.status,
-                                        creator=self.user)
+class TaskDeleteViewTest(SetUpLoggedUserWithTaskMixin, TestCase):
 
     def test_delete_task_view_status_code(self):
         response = self.client.get(reverse('tasks_delete',
@@ -99,14 +73,7 @@ class TaskDeleteViewTest(SetUpLoggedUserMixin, TestCase):
         self.assertFalse(Task.objects.filter(name='Task to Delete').exists())
 
 
-class TaskSingleViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.status = Status.objects.create(name='To Do')
-        self.task = Task.objects.create(name='Test Task',
-                                        status=self.status,
-                                        creator=self.user)
+class TaskSingleViewTest(SetUpLoggedUserWithTaskMixin, TestCase):
 
     def test_task_detail_view_status_code(self):
         response = self.client.get(reverse('tasks_single',

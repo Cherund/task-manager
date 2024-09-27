@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
-from apps.core.mixins import SetUpLoggedUserMixin
+from apps.core.mixins import SetUpLoggedUserMixin, SetUpLoggedUserWithLabelMixin
 from apps.labels.forms import LabelForm
 from apps.labels.models import Label
 from apps.statuses.models import Status
@@ -8,11 +8,7 @@ from apps.tasks.models import Task
 from django.utils.translation import gettext as _
 
 
-class LabelIndexViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.label = Label.objects.create(name='Test Label')
+class LabelIndexViewTest(SetUpLoggedUserWithLabelMixin, TestCase):
 
     def test_label_list_view_status_code(self):
         response = self.client.get(reverse('labels'))
@@ -46,11 +42,7 @@ class LabelCreateViewTest(SetUpLoggedUserMixin, TestCase):
         self.assertTrue(Label.objects.filter(name='New Label').exists())
 
 
-class LabelUpdateViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.label = Label.objects.create(name='Test Label')
+class LabelUpdateViewTest(SetUpLoggedUserWithLabelMixin, TestCase):
 
     def test_update_label_view_status_code(self):
         response = self.client.get(reverse('labels_update',
@@ -67,11 +59,7 @@ class LabelUpdateViewTest(SetUpLoggedUserMixin, TestCase):
         self.assertEqual(self.label.name, 'Updated Label')
 
 
-class LabelDeleteViewTest(SetUpLoggedUserMixin, TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.label = Label.objects.create(name='Test Label')
+class LabelDeleteViewTest(SetUpLoggedUserWithLabelMixin, TestCase):
 
     def test_delete_label_view_status_code(self):
         response = self.client.get(reverse('labels_delete',
