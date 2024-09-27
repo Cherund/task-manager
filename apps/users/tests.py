@@ -1,16 +1,14 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+
+from apps.core.mixins import SetUpLoggedUserMixin
 from apps.users.forms import CustomUserCreationForm
 from django.conf import settings
 from django.utils.translation import gettext as _
 
 
-class UserIndexViewTest(TestCase):
-
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='xsw23edc')
+class UserIndexViewTest(SetUpLoggedUserMixin, TestCase):
 
     def test_user_list_view_status_code(self):
         response = self.client.get(reverse('users'))
@@ -49,12 +47,7 @@ class UserCreateViewTest(TestCase):
         self.assertTrue(get_user_model().objects.filter(username='newuser').exists())
 
 
-class UserUpdateViewTest(TestCase):
-
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='xsw23edc')
-        self.client.login(username='testuser', password='xsw23edc')
+class UserUpdateViewTest(SetUpLoggedUserMixin, TestCase):
 
     def test_update_user_view_status_code(self):
         response = self.client.get(reverse('users_update',
@@ -77,14 +70,7 @@ class UserUpdateViewTest(TestCase):
         self.assertEqual(self.user.username, 'updateduser')
 
 
-class UserDeleteViewTest(TestCase):
-
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         first_name='test',
-                                                         last_name='user',
-                                                         password='xsw23edc')
-        self.client.login(username='testuser', password='xsw23edc')
+class UserDeleteViewTest(SetUpLoggedUserMixin, TestCase):
 
     def test_delete_user_view_status_code(self):
         response = self.client.get(reverse('users_delete',
@@ -98,14 +84,12 @@ class UserDeleteViewTest(TestCase):
         self.assertFalse(get_user_model().objects.filter(username='testuser').exists())
 
 
-class UserUpdateViewPermissionsTest(TestCase):
+class UserUpdateViewPermissionsTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.owner = get_user_model().objects.create_user(username='owner',
-                                                          password='password123')
+        super().setUp()
         self.other_user = get_user_model().objects.create_user(username='otheruser',
                                                                password='password123')
-        self.client.login(username='owner', password='password123')
 
     def test_cannot_update_another_user(self):
         data = {
@@ -129,14 +113,12 @@ class UserUpdateViewPermissionsTest(TestCase):
                          _('You are not authorized to modify another user.'))
 
 
-class UserDeleteViewPermissionsTest(TestCase):
+class UserDeleteViewPermissionsTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.owner = get_user_model().objects.create_user(username='owner',
-                                                          password='password123')
+        super().setUp()
         self.other_user = get_user_model().objects.create_user(username='otheruser',
                                                                password='password123')
-        self.client.login(username='owner', password='password123')
 
     def test_cannot_delete_another_user(self):
         response = self.client.post(reverse('users_delete',
@@ -185,12 +167,7 @@ class UserLoginViewTest(TestCase):
         self.assertTemplateUsed(response, 'login.html')
         self.assertFalse(response.context['user'].is_authenticated)
 
-    class UserLogoutViewTest(TestCase):
-
-        def setUp(self):
-            self.user = get_user_model().objects.create_user(username='testuser',
-                                                             password='password123')
-            self.client.login(username='testuser', password='password123')
+    class UserLogoutViewTest(SetUpLoggedUserMixin, TestCase):
 
         def test_logout_view_status_code(self):
             response = self.client.get(reverse('logout'))

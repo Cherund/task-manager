@@ -16,13 +16,13 @@ class CustomLoginRequiredMixin(LoginRequiredMixin):
 class SetUpLoggedUserMixin:
     @classmethod
     def setUpTestData(cls):
-        cls.logged_user_data = {'username': 'testuser',
-                                'password': 'xsw23edc'}
-        cls.logged_user = get_user_model().objects.create_user(
-            username=cls.logged_user_data['username'],
-            password=cls.logged_user_data['password']
+        cls.user_data = {'username': 'testuser',
+                         'password': 'xsw23edc'}
+        cls.user = get_user_model().objects.create_user(
+            username=cls.user_data['username'],
+            password=cls.user_data['password']
         )
 
     def setUp(self):
-        self.client.login(username=self.logged_user.username,
-                          password=self.logged_user_data['password'])
+        self.client.login(username=self.user.username,
+                          password=self.user_data['password'])

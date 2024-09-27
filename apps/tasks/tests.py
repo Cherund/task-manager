@@ -1,20 +1,20 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+
+from apps.core.mixins import SetUpLoggedUserMixin
 from apps.tasks.models import Task
 from apps.statuses.models import Status
 
 
-class TaskIndexViewTest(TestCase):
+class TaskIndexViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='password123')
+        super().setUp()
         self.status = Status.objects.create(name='In Progress')
         self.task = Task.objects.create(name='Test Task',
                                         status=self.status,
                                         creator=self.user)
-        self.client.login(username='testuser', password='password123')
 
     def test_task_list_view_status_code(self):
         response = self.client.get(reverse('tasks'))
@@ -31,13 +31,11 @@ class TaskIndexViewTest(TestCase):
         self.assertEqual(response.context['tasks'][0].name, 'Test Task')
 
 
-class TaskCreateViewTest(TestCase):
+class TaskCreateViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='password123')
+        super().setUp()
         self.status = Status.objects.create(name='To Do')
-        self.client.login(username='testuser', password='password123')
 
     def test_create_task_view_status_code(self):
         response = self.client.get(reverse('tasks_create'))
@@ -54,16 +52,14 @@ class TaskCreateViewTest(TestCase):
         self.assertTrue(Task.objects.filter(name='New Task').exists())
 
 
-class TaskUpdateViewTest(TestCase):
+class TaskUpdateViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='password123')
+        super().setUp()
         self.status = Status.objects.create(name='In Progress')
         self.task = Task.objects.create(name='Task to Update',
                                         status=self.status,
                                         creator=self.user)
-        self.client.login(username='testuser', password='password123')
 
     def test_update_task_view_status_code(self):
         response = self.client.get(reverse('tasks_update',
@@ -84,16 +80,14 @@ class TaskUpdateViewTest(TestCase):
         self.assertEqual(self.task.description, 'Updated description')
 
 
-class TaskDeleteViewTest(TestCase):
+class TaskDeleteViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='password123')
+        super().setUp()
         self.status = Status.objects.create(name='To Do')
         self.task = Task.objects.create(name='Task to Delete',
                                         status=self.status,
                                         creator=self.user)
-        self.client.login(username='testuser', password='password123')
 
     def test_delete_task_view_status_code(self):
         response = self.client.get(reverse('tasks_delete',
@@ -107,16 +101,14 @@ class TaskDeleteViewTest(TestCase):
         self.assertFalse(Task.objects.filter(name='Task to Delete').exists())
 
 
-class TaskSingleViewTest(TestCase):
+class TaskSingleViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='password123')
+        super().setUp()
         self.status = Status.objects.create(name='To Do')
         self.task = Task.objects.create(name='Test Task',
                                         status=self.status,
                                         creator=self.user)
-        self.client.login(username='testuser', password='password123')
 
     def test_task_detail_view_status_code(self):
         response = self.client.get(reverse('tasks_single',

@@ -1,19 +1,18 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
+
+from apps.core.mixins import SetUpLoggedUserMixin
 from apps.statuses.forms import StatusForm
 from apps.statuses.models import Status
 from apps.tasks.models import Task
 from django.utils.translation import gettext as _
 
 
-class StatusIndexViewTest(TestCase):
+class StatusIndexViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='xsw23edc')
-        self.client.login(username='testuser', password='xsw23edc')
-
+        super().setUp()
         self.status = Status.objects.create(name='Test Status')
 
     def test_status_list_view_status_code(self):
@@ -31,12 +30,7 @@ class StatusIndexViewTest(TestCase):
         self.assertEqual(response.context['statuses'][0].name, 'Test Status')
 
 
-class StatusCreateViewTest(TestCase):
-
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='xsw23edc')
-        self.client.login(username='testuser', password='xsw23edc')
+class StatusCreateViewTest(SetUpLoggedUserMixin, TestCase):
 
     def test_create_status_view_status_code(self):
         response = self.client.get(reverse('statuses_create'))
@@ -53,13 +47,10 @@ class StatusCreateViewTest(TestCase):
         self.assertTrue(Status.objects.filter(name='New Status').exists())
 
 
-class StatusUpdateViewTest(TestCase):
+class StatusUpdateViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='xsw23edc')
-        self.client.login(username='testuser', password='xsw23edc')
-
+        super().setUp()
         self.status = Status.objects.create(name='Test Status')
 
     def test_update_status_view_status_code(self):
@@ -77,13 +68,10 @@ class StatusUpdateViewTest(TestCase):
         self.assertEqual(self.status.name, 'Updated Status')
 
 
-class StatusDeleteViewTest(TestCase):
+class StatusDeleteViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='xsw23edc')
-        self.client.login(username='testuser', password='xsw23edc')
-
+        super().setUp()
         self.status = Status.objects.create(name='Test Status')
 
     def test_delete_status_view_status_code(self):

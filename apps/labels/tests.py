@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
+
+from apps.core.mixins import SetUpLoggedUserMixin
 from apps.labels.forms import LabelForm
 from apps.labels.models import Label
 from apps.statuses.models import Status
@@ -8,13 +10,10 @@ from apps.tasks.models import Task
 from django.utils.translation import gettext as _
 
 
-class LabelIndexViewTest(TestCase):
+class LabelIndexViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='xsw23edc')
-        self.client.login(username='testuser', password='xsw23edc')
-
+        super().setUp()
         self.label = Label.objects.create(name='Test Label')
 
     def test_label_list_view_status_code(self):
@@ -32,12 +31,7 @@ class LabelIndexViewTest(TestCase):
         self.assertEqual(response.context['labels'][0].name, 'Test Label')
 
 
-class LabelCreateViewTest(TestCase):
-
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='xsw23edc')
-        self.client.login(username='testuser', password='xsw23edc')
+class LabelCreateViewTest(SetUpLoggedUserMixin, TestCase):
 
     def test_create_label_view_status_code(self):
         response = self.client.get(reverse('labels_create'))
@@ -54,13 +48,10 @@ class LabelCreateViewTest(TestCase):
         self.assertTrue(Label.objects.filter(name='New Label').exists())
 
 
-class LabelUpdateViewTest(TestCase):
+class LabelUpdateViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='xsw23edc')
-        self.client.login(username='testuser', password='xsw23edc')
-
+        super().setUp()
         self.label = Label.objects.create(name='Test Label')
 
     def test_update_label_view_status_code(self):
@@ -78,13 +69,10 @@ class LabelUpdateViewTest(TestCase):
         self.assertEqual(self.label.name, 'Updated Label')
 
 
-class LabelDeleteViewTest(TestCase):
+class LabelDeleteViewTest(SetUpLoggedUserMixin, TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser',
-                                                         password='xsw23edc')
-        self.client.login(username='testuser', password='xsw23edc')
-
+        super().setUp()
         self.label = Label.objects.create(name='Test Label')
 
     def test_delete_label_view_status_code(self):
