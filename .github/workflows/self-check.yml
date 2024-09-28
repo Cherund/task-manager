@@ -47,5 +47,5 @@ jobs:
           DATABASE_URL: 'postgres://postgres:postgres@localhost:5432/postgres'
           SECRET_KEY: not_so_secret
         with:
-          coverageCommand: make test-coverage
+          coverageCommand: make test
           debug: true
