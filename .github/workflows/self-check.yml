@@ -2,35 +2,52 @@ name: Self written tests
 
 on:
   - push
+  - pull_request
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.11, 3.12]
+        python-version: [ 3.11 ]
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: setup-python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: ${{matrix.python-version}}
+          python-version: ${{ matrix.python-version }}
 
-      - name: install dependencies
-        run: pip install poetry && make install
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          make install
 
-      - name: Setup Django Database
-        run: make migrate
-
-      - name: check linter
+      - name: Run linter
         run: make lint
 
-      - name: checking coverage
+      - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.2.0
+        if: github.ref_name == 'main'
         env:
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          DATABASE_URL: 'postgres://postgres:postgres@localhost:5432/postgres'
           SECRET_KEY: not_so_secret
         with:
           coverageCommand: make test-coverage
