@@ -72,6 +72,8 @@ if ACCESS_TOKEN:
         'code_version': '1.0',
         'root': BASE_DIR,
     }
+else:
+    ROLLBAR = None
 
 ROOT_URLCONF = 'task_manager.urls'
 
