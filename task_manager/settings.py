@@ -72,10 +72,9 @@ if ACCESS_TOKEN:
         'code_version': '1.0',
         'root': BASE_DIR,
     }
-else:
-    ROLLBAR = None
 
-rollbar.init(**ROLLBAR)
+    rollbar.init(**ROLLBAR)
+
 
 ROOT_URLCONF = 'task_manager.urls'
 
