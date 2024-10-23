@@ -11,11 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
 from django.urls import reverse_lazy
 from dotenv import load_dotenv
 import os
 import dj_database_url
+import rollbar
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,6 +74,8 @@ if ACCESS_TOKEN:
     }
 else:
     ROLLBAR = None
+
+rollbar.init(**ROLLBAR)
 
 ROOT_URLCONF = 'task_manager.urls'
 
