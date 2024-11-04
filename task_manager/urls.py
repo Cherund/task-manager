@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from apps.core.views import IndexView
 from apps.users.views import UserLoginView, UserLogoutView
-from task_manager.views import index
+
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
@@ -28,5 +28,4 @@ urlpatterns = [
     path('labels/', include('apps.labels.urls')),
     path('tasks/', include('apps.tasks.urls')),
     path('admin/', admin.site.urls, name='admin'),
-    path('rollbar/', index, name='rollbar'),  # Checking how Rollbar works
 ]
