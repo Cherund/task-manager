@@ -91,6 +91,8 @@ TEMPLATES = [
     },
 ]
 
+HANDLER404 = 'core.views.custom_404_view'
+
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 # Database
