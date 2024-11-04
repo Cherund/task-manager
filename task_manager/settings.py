@@ -15,7 +15,6 @@ from django.urls import reverse_lazy
 from dotenv import load_dotenv
 import os
 import dj_database_url
-import rollbar
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -72,8 +71,6 @@ if ACCESS_TOKEN:
         'code_version': '1.0',
         'root': BASE_DIR,
     }
-
-    rollbar.init(**ROLLBAR)
 
 
 ROOT_URLCONF = 'task_manager.urls'

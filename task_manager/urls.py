@@ -28,5 +28,5 @@ urlpatterns = [
     path('labels/', include('apps.labels.urls')),
     path('tasks/', include('apps.tasks.urls')),
     path('admin/', admin.site.urls, name='admin'),
-    path('rollbar/', index, name='rollbar'),
+    path('rollbar/', index, name='rollbar'),  # Checking how Rollbar works
 ]
