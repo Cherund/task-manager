@@ -21,8 +21,8 @@
             <th></th>
         </tr>
         </thead>
-        {% for label in labels %}
         <tbody>
+        {% for label in labels %}
         <tr>
             <td>{{ label.id }}</td>
             <td>{{ label }}</td>
@@ -33,8 +33,8 @@
                 <a href="{% url 'labels_delete' pk=label.pk %}">{% trans 'Delete' %}</a>
             </td>
         </tr>
-        </tbody>
         {% endfor %}
+        </tbody>
     </table>
 
 </div>

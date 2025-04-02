@@ -15,8 +15,8 @@
             <th></th>
         </tr>
         </thead>
-        {% for user in users %}
         <tbody>
+        {% for user in users %}
         <tr>
             <td>{{ user.id }}</td>
             <td>{{ user.username }}</td>
@@ -29,8 +29,9 @@
             </td>
         </tr>
 
-        </tbody>
+
         {% endfor %}
+        </tbody>
     </table>
 
 </main>

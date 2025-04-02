@@ -34,8 +34,8 @@
             <th></th>
         </tr>
         </thead>
-        {% for task in tasks %}
         <tbody>
+        {% for task in tasks %}
         <tr>
             <td>{{task.id }}</td>
             <td>
@@ -51,8 +51,8 @@
                 <a href="{% url 'tasks_delete' pk=task.pk %}">{% trans 'Delete' %}</a>
             </td>
         </tr>
-        </tbody>
         {% endfor %}
+        </tbody>
     </table>
 
 </div>
