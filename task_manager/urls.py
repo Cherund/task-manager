@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from apps.core.views import IndexView
 from apps.users.views import UserLoginView, UserLogoutView
+from django.conf.urls.i18n import set_language
 
 
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
     path('labels/', include('apps.labels.urls')),
     path('tasks/', include('apps.tasks.urls')),
     path('admin/', admin.site.urls, name='admin'),
+    path('set_language/', set_language, name='set_language'),
 ]
