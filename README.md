@@ -2,7 +2,7 @@
 [![Actions Status](https://github.com/Cherund/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Cherund/python-project-52/actions)
 [![Actions Status](https://github.com/Cherund/python-project-52/actions/workflows/self-check.yml/badge.svg)](https://github.com/Cherund/python-project-52/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/bdfddf7136e5bbfe475f/maintainability)](https://codeclimate.com/github/Cherund/python-project-52/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/bdfddf7136e5bbfe475f/test_coverage)](https://codeclimate.com/github/Cherund/python-project-52/test_coverage)
+
 # Task Manager
 
 ## Overview
